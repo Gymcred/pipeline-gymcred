@@ -9,14 +9,44 @@
 :root{--bg:#0d0f14;--s:#13161e;--s2:#1a1e28;--bd:#252a38;--g:#00e5a0;--v:#7c6af7;--o:#f7a26a;--r:#f25c5c;--t:#e8eaf0;--m:#5a6070;--b2:#38bdf8;}
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'Syne',sans-serif;background:var(--bg);color:var(--t);min-height:100vh;}
+
+/* LOGIN */
+#login-screen{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;z-index:999;}
+.login-box{background:var(--s);border:1px solid var(--bd);border-radius:20px;padding:40px;width:360px;text-align:center;}
+.login-logo{width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,var(--g),var(--v));display:flex;align-items:center;justify-content:center;font-size:26px;margin:0 auto 20px;}
+.login-title{font-size:22px;font-weight:800;margin-bottom:6px;}
+.login-sub{font-size:13px;color:var(--m);margin-bottom:28px;}
+.login-input{width:100%;padding:12px 16px;background:var(--s2);border:1.5px solid var(--bd);border-radius:10px;color:var(--t);font-size:14px;font-family:'Syne',sans-serif;outline:none;transition:border .2s;margin-bottom:12px;}
+.login-input:focus{border-color:var(--g);}
+.login-btn{width:100%;padding:12px;background:var(--g);border:none;border-radius:10px;color:#0d0f14;font-size:14px;font-weight:800;cursor:pointer;font-family:'Syne',sans-serif;transition:opacity .2s;}
+.login-btn:hover{opacity:.85;}
+.login-error{font-size:12px;color:var(--r);margin-top:10px;display:none;}
+
+/* APP */
+#app{display:none;}
 nav{display:flex;align-items:center;justify-content:space-between;padding:16px 40px;border-bottom:1px solid var(--bd);background:var(--s);position:sticky;top:0;z-index:100;}
 .nav-brand{display:flex;align-items:center;gap:12px;}
 .nav-logo{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--g),var(--v));display:flex;align-items:center;justify-content:center;font-size:18px;}
 .nav-title{font-size:16px;font-weight:800;}
 .nav-sub{font-size:11px;color:var(--m);}
+.nav-right{display:flex;align-items:center;gap:10px;}
+.sync-badge{display:flex;align-items:center;gap:7px;background:var(--s2);border:1px solid var(--bd);border-radius:8px;padding:6px 12px;font-size:11px;color:var(--m);}
+.sync-dot{width:6px;height:6px;border-radius:50%;background:var(--m);flex-shrink:0;}
+.sync-dot.live{background:var(--g);box-shadow:0 0 8px var(--g);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.refresh-btn{display:flex;align-items:center;gap:6px;background:rgba(0,229,160,.08);border:1px solid rgba(0,229,160,.25);color:var(--g);border-radius:8px;padding:6px 14px;font-size:11px;font-weight:700;cursor:pointer;font-family:'Syne',sans-serif;transition:all .2s;}
+.refresh-btn:hover{background:rgba(0,229,160,.16);}
+.logout-btn{background:transparent;border:1px solid var(--bd);color:var(--m);border-radius:8px;padding:6px 12px;font-size:11px;cursor:pointer;font-family:'Syne',sans-serif;}
 .tabs{display:flex;gap:4px;background:var(--s2);border-radius:10px;padding:4px;}
 .tab{padding:7px 24px;border-radius:7px;border:none;background:transparent;color:var(--m);font-size:13px;font-weight:700;cursor:pointer;font-family:'Syne',sans-serif;transition:all .2s;}
 .tab.active{background:var(--s);color:var(--t);box-shadow:0 1px 6px rgba(0,0,0,.4);}
+
+/* LOADING */
+.loading-screen{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:100px 24px;gap:16px;}
+.spinner{width:36px;height:36px;border:3px solid var(--bd);border-top-color:var(--g);border-radius:50%;animation:spin .7s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loading-screen p{color:var(--m);font-size:14px;}
+
 main{max-width:1400px;margin:0 auto;padding:28px 40px;}
 .kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:24px;}
 .kpi{background:var(--s);border:1px solid var(--bd);border-radius:14px;padding:20px 18px;border-top:3px solid transparent;transition:transform .2s,box-shadow .2s;}
@@ -27,14 +57,12 @@ main{max-width:1400px;margin:0 auto;padding:28px 40px;}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:24px;}
 .card{background:var(--s);border:1px solid var(--bd);border-radius:16px;padding:22px;margin-bottom:24px;}
 .card-title{font-size:10px;font-weight:700;color:var(--m);text-transform:uppercase;letter-spacing:.08em;margin-bottom:18px;}
-/* DONUT */
 .donut-wrap{display:flex;align-items:center;gap:20px;}
 .donut-legend{display:flex;flex-direction:column;gap:8px;flex:1;min-width:0;}
 .li{display:flex;align-items:center;gap:8px;font-size:12px;}
 .ld{width:9px;height:9px;border-radius:2px;flex-shrink:0;}
 .ln{color:var(--t);font-weight:600;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .lp{color:var(--m);flex-shrink:0;font-family:'DM Mono',monospace;font-size:11px;}
-/* STATUS BARS */
 .sbar{margin-bottom:14px;}
 .sbar-h{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;}
 .sbar-l{font-size:12px;font-weight:600;display:flex;align-items:center;gap:6px;}
@@ -42,22 +70,20 @@ main{max-width:1400px;margin:0 auto;padding:28px 40px;}
 .sbar-v{font-size:12px;font-family:'DM Mono',monospace;font-weight:600;}
 .track{height:6px;background:var(--s2);border-radius:3px;overflow:hidden;}
 .fill{height:100%;border-radius:3px;transition:width .9s cubic-bezier(.4,0,.2,1);}
-/* TIMELINE CHART */
 .timeline-chart{display:flex;flex-direction:column;gap:0;}
 .month-row{display:flex;align-items:stretch;gap:0;border-bottom:1px solid var(--bd);}
 .month-row:last-child{border-bottom:none;}
 .month-label{width:80px;flex-shrink:0;padding:12px 14px;font-size:11px;font-weight:700;color:var(--m);display:flex;flex-direction:column;justify-content:center;border-right:1px solid var(--bd);}
-.month-label .year{font-size:9px;color:var(--bd);text-transform:uppercase;letter-spacing:.06em;}
+.month-label .year{font-size:9px;color:var(--bd);text-transform:uppercase;}
 .month-bar-wrap{flex:1;padding:10px 16px;display:flex;flex-direction:column;gap:6px;}
 .month-bar-outer{display:flex;align-items:center;gap:10px;}
 .month-bar-inner{flex:1;height:8px;background:var(--s2);border-radius:4px;overflow:hidden;}
 .month-bar-fill{height:100%;border-radius:4px;transition:width .8s cubic-bezier(.4,0,.2,1);}
 .month-bar-val{font-size:11px;font-family:'DM Mono',monospace;font-weight:600;width:110px;flex-shrink:0;text-align:right;}
 .month-ops{display:flex;flex-wrap:wrap;gap:5px;margin-top:4px;}
-.month-op-tag{font-size:10px;font-weight:600;padding:2px 8px;border-radius:10px;background:var(--s2);color:var(--m);border:1px solid var(--bd);}
-/* SEMESTRE BLOCKS */
+.month-op-tag{font-size:10px;font-weight:600;padding:2px 8px;border-radius:10px;background:var(--s2);border:1px solid var(--bd);}
 .sem-section{margin-bottom:20px;}
-.sem-header{display:flex;align-items:center;gap:12px;margin-bottom:12px;padding:10px 16px;border-radius:10px;border-left:3px solid;}
+.sem-header{display:flex;align-items:center;gap:12px;margin-bottom:12px;padding:10px 16px;border-radius:10px;}
 .sem-title{font-size:13px;font-weight:800;}
 .sem-subtitle{font-size:11px;color:var(--m);}
 .sem-total{font-family:'DM Mono',monospace;font-size:14px;font-weight:800;margin-left:auto;}
@@ -66,8 +92,6 @@ main{max-width:1400px;margin:0 auto;padding:28px 40px;}
 .sem-op-name{font-size:12px;font-weight:700;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .sem-op-parceiro{font-size:10px;color:var(--m);}
 .sem-op-val{font-family:'DM Mono',monospace;font-size:12px;font-weight:700;}
-.sem-op-date{font-size:10px;color:var(--m);flex-shrink:0;}
-/* FILTERS */
 .filters{background:var(--s);border:1px solid var(--bd);border-radius:12px;padding:12px 18px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:16px;}
 .fl{font-size:10px;font-weight:700;color:var(--m);text-transform:uppercase;letter-spacing:.07em;}
 .fb{padding:4px 12px;border-radius:20px;border:1.5px solid var(--bd);background:transparent;color:var(--m);font-size:11px;font-weight:600;cursor:pointer;transition:all .15s;font-family:'Syne',sans-serif;}
@@ -76,7 +100,6 @@ main{max-width:1400px;margin:0 auto;padding:28px 40px;}
 .fcl{padding:4px 10px;border-radius:8px;border:1.5px solid rgba(242,92,92,.3);background:rgba(242,92,92,.06);color:var(--r);font-size:11px;font-weight:600;cursor:pointer;font-family:'Syne',sans-serif;}
 .fc{margin-left:auto;font-size:11px;color:var(--m);}
 .dv{width:1px;height:16px;background:var(--bd);flex-shrink:0;}
-/* TABLE */
 .tw{background:var(--s);border:1px solid var(--bd);border-radius:16px;overflow:hidden;}
 .ts{overflow-x:auto;}
 table{width:100%;border-collapse:collapse;font-size:12px;}
@@ -96,11 +119,6 @@ tfoot td{font-weight:700;font-family:'DM Mono',monospace;}
 .et{padding:40px;text-align:center;color:var(--m);font-size:13px;}
 .pill{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:20px;font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;}
 .pdot{width:5px;height:5px;border-radius:50%;}
-/* VP */
-.vp-bar-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
-.vp-name{font-size:11px;font-weight:600;width:130px;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--t);}
-.vp-val{font-size:11px;font-family:'DM Mono',monospace;width:90px;text-align:right;flex-shrink:0;}
-/* PROGRESS */
 .prog-wrap{display:flex;align-items:center;gap:8px;justify-content:flex-end;}
 .prog-bar{width:56px;height:5px;background:var(--s2);border-radius:3px;overflow:hidden;flex-shrink:0;}
 .prog-fill{height:100%;border-radius:3px;}
@@ -109,33 +127,184 @@ tfoot td{font-weight:700;font-family:'DM Mono',monospace;}
 </style>
 </head>
 <body>
+
+<!-- LOGIN -->
+<div id="login-screen">
+  <div class="login-box">
+    <div class="login-logo">💪</div>
+    <div class="login-title">GymCred</div>
+    <div class="login-sub">Dashboard de Operações · Acesso restrito</div>
+    <input class="login-input" type="password" id="pwdInput" placeholder="Digite a senha" onkeydown="if(event.key==='Enter')doLogin()"/>
+    <button class="login-btn" onclick="doLogin()">Entrar</button>
+    <div class="login-error" id="loginError">Senha incorreta. Tente novamente.</div>
+  </div>
+</div>
+
+<!-- APP -->
+<div id="app">
 <nav>
   <div class="nav-brand">
     <div class="nav-logo">💪</div>
     <div><div class="nav-title">GymCred</div><div class="nav-sub">Dashboard de Operações</div></div>
   </div>
-  <div class="tabs">
-    <button class="tab active" onclick="showTab('pipeline',this)">📋 Pipeline</button>
-    <button class="tab" onclick="showTab('carteira',this)">🏦 Carteira</button>
+  <div class="nav-right">
+    <div class="sync-badge">
+      <div class="sync-dot" id="syncDot"></div>
+      <span id="syncLabel">Carregando...</span>
+    </div>
+    <button class="refresh-btn" onclick="loadData()">↻ Atualizar</button>
+    <div class="tabs">
+      <button class="tab active" onclick="showTab('pipeline',this)">📋 Pipeline</button>
+      <button class="tab" onclick="showTab('carteira',this)">🏦 Carteira</button>
+    </div>
+    <button class="logout-btn" onclick="doLogout()">Sair</button>
   </div>
 </nav>
 <main>
-  <div id="tab-pipeline"></div>
-  <div id="tab-carteira" style="display:none"></div>
+  <div id="main-content">
+    <div class="loading-screen"><div class="spinner"></div><p>Buscando dados do Google Sheets...</p></div>
+  </div>
 </main>
+</div>
+
 <script>
+// ── SENHA ────────────────────────────────────────────────
+const SENHA = '@Gymcred123';
+const SESSION_KEY = 'gymcred_auth';
+
+function doLogin(){
+  const v = document.getElementById('pwdInput').value;
+  if(v === SENHA){
+    sessionStorage.setItem(SESSION_KEY,'1');
+    document.getElementById('login-screen').style.display='none';
+    document.getElementById('app').style.display='block';
+    loadData();
+  } else {
+    document.getElementById('loginError').style.display='block';
+    document.getElementById('pwdInput').value='';
+    document.getElementById('pwdInput').focus();
+  }
+}
+function doLogout(){
+  sessionStorage.removeItem(SESSION_KEY);
+  location.reload();
+}
+// Manter sessão ao recarregar
+if(sessionStorage.getItem(SESSION_KEY)==='1'){
+  document.getElementById('login-screen').style.display='none';
+  document.getElementById('app').style.display='block';
+}
+
+// ── CONFIG ───────────────────────────────────────────────
+const BASE = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSU8LBNt6_gLqBDNB75DRs3B7yv6MnbO-PNSkp4TnDIKR-jZLt9NmrMzku8gMhAEg8Xvlkbdie8RCxn/pub?output=csv';
+const URL_PIPELINE = BASE + '&gid=0';
+const URL_CARTEIRA = BASE + '&gid=1';
+
 const COLORS=['#00e5a0','#7c6af7','#f7a26a','#f25c5c','#38bdf8','#e879f9','#fb923c','#4ade80','#facc15','#60a5fa','#a78bfa','#34d399'];
 const SP={'aprovado':{label:'Aprovado',color:'#00e5a0',bg:'rgba(0,229,160,.12)'},'desembolsado':{label:'Desembolsado',color:'#7c6af7',bg:'rgba(124,106,247,.12)'},'negado':{label:'Negado',color:'#f25c5c',bg:'rgba(242,92,92,.12)'},'em aprovacao':{label:'Em Aprovação',color:'#f7a26a',bg:'rgba(247,162,106,.12)'},'em aprovação':{label:'Em Aprovação',color:'#f7a26a',bg:'rgba(247,162,106,.12)'}};
 const MONTHS=['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
 const fmt=v=>(!v||isNaN(v))?'—':new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL',maximumFractionDigits:0}).format(v);
 const pct=v=>(!v||isNaN(v))?'—':(v*100).toFixed(1)+'%';
 const fmtD=s=>s?new Date(s+'T12:00:00').toLocaleDateString('pt-BR'):'—';
+const num=s=>{if(!s)return 0;const n=parseFloat(s.toString().replace(/[^\d.,-]/g,'').replace(',','.'));return isNaN(n)?0:n;};
 
-const PIPELINE=[{"cliente": "Panobianco", "parceiro": "Supreme", "status": "aprovado", "valor": 1179125.5, "entrada": 0.1, "liquido": 1061212.95, "tcTotal": 0.06, "tcLiq": 0.055, "tc": 62092.2471, "financiado": 1128949.9468, "dataDesembolso": "2026-04-30", "semestreLabel": null, "prioridade": "Alta"}, {"cliente": "Spartacus", "parceiro": "Supertech", "status": "negado", "valor": 125004.0, "entrada": 0.2, "liquido": 100003.2, "tcTotal": 0.07, "tcLiq": 0.065, "tc": 6989.471, "financiado": 107530.3226, "dataDesembolso": "2026-04-30", "semestreLabel": null, "prioridade": "Alta"}, {"cliente": "Skyfit", "parceiro": "cimerian", "status": "aprovado", "valor": 2350062.96, "entrada": 0.2, "liquido": 1880050.368, "tcTotal": 0.065, "tcLiq": 0.06, "tc": 120644.9434, "financiado": 2010749.0567, "dataDesembolso": "2026-04-30", "semestreLabel": null, "prioridade": "Alta"}, {"cliente": "Edu Dos santos", "parceiro": "cimerian", "status": "aprovado", "valor": 416833.56, "entrada": 0.1, "liquido": 375150.204, "tcTotal": 0.055, "tcLiq": 0.05, "tc": 19849.2171, "financiado": 396984.3429, "dataDesembolso": "2026-03-18", "semestreLabel": null, "prioridade": "Alta"}, {"cliente": "Mario", "parceiro": "cimerian", "status": "aprovado", "valor": 201920.0, "entrada": 0.1, "liquido": 181728.0, "tcTotal": 0.055, "tcLiq": 0.05, "tc": 9615.2381, "financiado": 192304.7619, "dataDesembolso": "2026-05-01", "semestreLabel": null, "prioridade": "Alta"}, {"cliente": "CT Saúde", "parceiro": "starkstrong", "status": "aprovado", "valor": 1234375.89, "entrada": 0.5, "liquido": 617187.945, "tcTotal": 0.065, "tcLiq": 0.06, "tc": 39605.6435, "financiado": 660094.0588, "dataDesembolso": "2026-05-02", "semestreLabel": null, "prioridade": "Alta"}, {"cliente": "Total Fit (Smart Fit)", "parceiro": "total health", "status": "aprovado", "valor": 1129916.0, "entrada": 0.2, "liquido": 903932.8, "tcTotal": 0.065, "tcLiq": 0.06, "tc": 58006.3829, "financiado": 966773.0481, "dataDesembolso": "2026-05-03", "semestreLabel": null, "prioridade": "Alta"}, {"cliente": "JPR", "parceiro": "cimerian", "status": "aprovado", "valor": 777355.45, "entrada": 0.2, "liquido": 621884.36, "tcTotal": 0.065, "tcLiq": 0.06, "tc": 39907.0178, "financiado": 665116.9626, "dataDesembolso": "2026-03-18", "semestreLabel": null, "prioridade": "Alta"}, {"cliente": "Move Fitness", "parceiro": "Supertech", "status": "desembolsado", "valor": 674871.175, "entrada": 0.2, "liquido": 539896.94, "tcTotal": 0.075, "tcLiq": 0.07, "tc": 40857.0657, "financiado": 583672.3676, "dataDesembolso": null, "semestreLabel": "2S2026", "prioridade": "Alta"}, {"cliente": "CT Conexão", "parceiro": "Metal Fitness", "status": "desembolsado", "valor": 300000.0, "entrada": 0.0, "liquido": 300000.0, "tcTotal": 0.07, "tcLiq": 0.065, "tc": 20967.7419, "financiado": 322580.6452, "dataDesembolso": null, "semestreLabel": "2S2026", "prioridade": "Alta"}, {"cliente": "Rafael Amarante Diniz", "parceiro": "Drako", "status": "aprovado", "valor": 2000000.0, "entrada": 0.2, "liquido": 1600000.0, "tcTotal": 0.05, "tcLiq": 0.045, "tc": 80000.0, "financiado": 1680000.0, "dataDesembolso": null, "semestreLabel": "2S2026", "prioridade": "Alta"}, {"cliente": "Pedro Ivo Almeida Silva Romão Gomes", "parceiro": "Drako", "status": "aprovado", "valor": 2000000.0, "entrada": 0.2, "liquido": 1600000.0, "tcTotal": 0.05, "tcLiq": 0.045, "tc": 80000.0, "financiado": 1680000.0, "dataDesembolso": null, "semestreLabel": "2S2026", "prioridade": "Alta"}, {"cliente": "Jean Carlos Silva de Souza", "parceiro": "Drako", "status": "aprovado", "valor": 2000000.0, "entrada": 0.2, "liquido": 1600000.0, "tcTotal": 0.05, "tcLiq": 0.045, "tc": 80000.0, "financiado": 1680000.0, "dataDesembolso": null, "semestreLabel": "2S2026", "prioridade": "Alta"}, {"cliente": "Isabella de Moraes Masuko/João Pedro Ribeiro Perez", "parceiro": "Drako", "status": "aprovado", "valor": 4000000.0, "entrada": 0.2, "liquido": 3200000.0, "tcTotal": 0.05, "tcLiq": 0.045, "tc": 160000.0, "financiado": 3360000.0, "dataDesembolso": null, "semestreLabel": "2S2026", "prioridade": "Alta"}, {"cliente": "Lucas Guimarães Nascimento", "parceiro": "Drako", "status": "aprovado", "valor": 2000000.0, "entrada": 0.2, "liquido": 1600000.0, "tcTotal": 0.05, "tcLiq": 0.045, "tc": 80000.0, "financiado": 1680000.0, "dataDesembolso": null, "semestreLabel": "2S2026", "prioridade": "Alta"}, {"cliente": "Juliana Silva Souza Lima", "parceiro": "Drako", "status": "aprovado", "valor": 3500000.0, "entrada": 0.2, "liquido": 2800000.0, "tcTotal": 0.05, "tcLiq": 0.045, "tc": 140000.0, "financiado": 2940000.0, "dataDesembolso": null, "semestreLabel": "2S2026", "prioridade": "Media"}, {"cliente": "Danielly Rubbo", "parceiro": "Drako", "status": "aprovado", "valor": 3360000.0, "entrada": 0.2, "liquido": 2688000.0, "tcTotal": 0.05, "tcLiq": 0.045, "tc": 134400.0, "financiado": 2822400.0, "dataDesembolso": null, "semestreLabel": "2S2026", "prioridade": "Media"}, {"cliente": "Rodrigo Otavio Gomes Correa", "parceiro": "Drako", "status": "aprovado", "valor": 2000000.0, "entrada": 0.0, "liquido": 2000000.0, "tcTotal": 0.05, "tcLiq": 0.045, "tc": 100000.0, "financiado": 2100000.0, "dataDesembolso": null, "semestreLabel": "2S2026", "prioridade": "Media"}, {"cliente": "Samer Fakir", "parceiro": "Drako", "status": "aprovado", "valor": 0, "entrada": 0, "liquido": 0.0, "tcTotal": 0.05, "tcLiq": 0.045, "tc": 0.0, "financiado": 0.0, "dataDesembolso": null, "semestreLabel": "2S2026", "prioridade": "Media"}, {"cliente": "Genio", "parceiro": "Drako", "status": "aprovado", "valor": 691400.0, "entrada": 0.1, "liquido": 622260.0, "tcTotal": 0.05, "tcLiq": 0.045, "tc": 31113.0, "financiado": 653373.0, "dataDesembolso": null, "semestreLabel": "2S2026", "prioridade": "Baixa"}, {"cliente": "Patrícia de Cássia Moreira Pereira", "parceiro": "Drako", "status": "aprovado", "valor": 2000000.0, "entrada": 0.2, "liquido": 1600000.0, "tcTotal": 0.05, "tcLiq": 0.045, "tc": 80000.0, "financiado": 1680000.0, "dataDesembolso": null, "semestreLabel": "2S2026", "prioridade": "Baixa"}, {"cliente": "Demerson Silva (Arapongas)", "parceiro": "Drako", "status": "negado", "valor": 2000000.0, "entrada": 0.2, "liquido": 1600000.0, "tcTotal": 0.05, "tcLiq": 0.045, "tc": 80000.0, "financiado": 1680000.0, "dataDesembolso": null, "semestreLabel": "2S2026", "prioridade": "Baixa"}];
-const CARTEIRA=[{"cliente": "Kaha", "parceiro": "Cimerian", "localidade": "Jundiai/SP", "dataEmissao": "2025-01-23", "valor": 628272.25, "vp": 503425.49, "taxa": 0.028, "prazo": 36, "mesesAtivos": 14, "mesesRestantes": 22}, {"cliente": "Olimpica", "parceiro": "Cimerian", "localidade": "Lucas Do Rio Verde/MT", "dataEmissao": "2025-02-18", "valor": 721284.9, "vp": 562212.69, "taxa": 0.028, "prazo": 36, "mesesAtivos": 13, "mesesRestantes": 23}, {"cliente": "Interfit", "parceiro": "Buckler", "localidade": "Altamira/PA", "dataEmissao": "2025-06-02", "valor": 2552151.72, "vp": 2248128.97, "taxa": 0.028, "prazo": 36, "mesesAtivos": 9, "mesesRestantes": 27}, {"cliente": "Alessandra Weege & Weege", "parceiro": "Cimerian", "localidade": "Ponta Grossa/PR", "dataEmissao": "2025-06-24", "valor": 187308.42, "vp": 196333.21, "taxa": 0.03, "prazo": 48, "mesesAtivos": 9, "mesesRestantes": 39}, {"cliente": "Dos Santos", "parceiro": "Cimerian", "localidade": "Teresina/PI", "dataEmissao": "2025-05-21", "valor": 576941.31, "vp": 238954.01, "taxa": 0.03, "prazo": 48, "mesesAtivos": 10, "mesesRestantes": 38}, {"cliente": "Kormann", "parceiro": "Cimerian", "localidade": "Cuiaba/MT", "dataEmissao": "2025-07-02", "valor": 891065.77, "vp": 1007229.86, "taxa": 0.03, "prazo": 48, "mesesAtivos": 8, "mesesRestantes": 40}, {"cliente": "Essential", "parceiro": "Cimerian", "localidade": "Rio De Janeiro/RJ", "dataEmissao": "2025-04-02", "valor": 1051318.73, "vp": 1052690.64, "taxa": 0.03, "prazo": 48, "mesesAtivos": 11, "mesesRestantes": 37}, {"cliente": "Ruggery", "parceiro": "Cimerian", "localidade": "Brasnorte/MT", "dataEmissao": "2025-01-28", "valor": 566456.63, "vp": 513057.66, "taxa": 0.03, "prazo": 48, "mesesAtivos": 13, "mesesRestantes": 35}, {"cliente": "ALF", "parceiro": "Cimerian", "localidade": "Sao Paulo/SP", "dataEmissao": "2025-06-30", "valor": 318116.62, "vp": 345363.58, "taxa": 0.03, "prazo": 48, "mesesAtivos": 8, "mesesRestantes": 40}, {"cliente": "Top Gym", "parceiro": "Cimerian", "localidade": "Florania/RN", "dataEmissao": "2025-06-23", "valor": 629575.78, "vp": 199892.44, "taxa": 0.03, "prazo": 48, "mesesAtivos": 9, "mesesRestantes": 39}, {"cliente": "JPR Health (1) Supertech", "parceiro": "Supertech", "localidade": "Jundiai/SP", "dataEmissao": "2025-08-20", "valor": 734621.41, "vp": 738598.74, "taxa": 0.03, "prazo": 36, "mesesAtivos": 7, "mesesRestantes": 29}, {"cliente": "JPR Health (2) Cimerian", "parceiro": "Cimerian", "localidade": "Jundiai/SP", "dataEmissao": "2025-08-20", "valor": 379431.58, "vp": 358931.77, "taxa": 0.03, "prazo": 24, "mesesAtivos": 7, "mesesRestantes": 17}, {"cliente": "Academia Meb Fitness", "parceiro": "Cimerian", "localidade": "Rio De Janeiro/RJ", "dataEmissao": "2025-07-17", "valor": 406124.24, "vp": 452122.79, "taxa": 0.03, "prazo": 48, "mesesAtivos": 8, "mesesRestantes": 40}, {"cliente": "Body Factory", "parceiro": "Total Health", "localidade": "Sao Jose/SC", "dataEmissao": "2025-08-13", "valor": 255528.48, "vp": 257115.82, "taxa": 0.03, "prazo": 48, "mesesAtivos": 7, "mesesRestantes": 41}, {"cliente": "Evolve", "parceiro": "Cimerian", "localidade": "Canoinhas/SC", "dataEmissao": "2025-08-01", "valor": 213736.72, "vp": 224800.89, "taxa": 0.03, "prazo": 48, "mesesAtivos": 7, "mesesRestantes": 41}, {"cliente": "Kavera Cross", "parceiro": "Cimerian", "localidade": "Divinopolis/MG", "dataEmissao": "2025-07-11", "valor": 172436.32, "vp": 162740.03, "taxa": 0.028, "prazo": 48, "mesesAtivos": 8, "mesesRestantes": 40}, {"cliente": "AT Alvarenga", "parceiro": "Cimerian", "localidade": "Campos Dos Goytacazes/RJ", "dataEmissao": "2025-08-19", "valor": 94829.73, "vp": 89934.1, "taxa": 0.028, "prazo": 48, "mesesAtivos": 7, "mesesRestantes": 41}, {"cliente": "Vida Ativa", "parceiro": "Metal Fitness", "localidade": "Mage/RJ", "dataEmissao": "2025-08-08", "valor": 60748.66, "vp": 55667.13, "taxa": 0.028, "prazo": 48, "mesesAtivos": 7, "mesesRestantes": 41}, {"cliente": "MLC", "parceiro": "Metal Fitness", "localidade": "Rio De Janeiro/RJ", "dataEmissao": "2025-09-11", "valor": 261593.58, "vp": 286581.29, "taxa": 0.03, "prazo": 48, "mesesAtivos": 6, "mesesRestantes": 42}, {"cliente": "Lima e Ribeiro", "parceiro": "Metal Fitness", "localidade": "Itapeva/MG", "dataEmissao": "2025-09-17", "valor": 117182.51, "vp": 122642.81, "taxa": 0.03, "prazo": 48, "mesesAtivos": 6, "mesesRestantes": 42}, {"cliente": "Taurus", "parceiro": "Cimerian", "localidade": "Montes Claros/MG", "dataEmissao": "2025-10-28", "valor": 430107.53, "vp": 487078.43, "taxa": 0.03, "prazo": 48, "mesesAtivos": 4, "mesesRestantes": 44}, {"cliente": "Promuscule (Romano)", "parceiro": "Romano", "localidade": "Ribeira do Pombal/BA", "dataEmissao": "2025-09-22", "valor": 449197.86, "vp": 487694.77, "taxa": 0.03, "prazo": 48, "mesesAtivos": 6, "mesesRestantes": 42}, {"cliente": "Promuscule (Power Run)", "parceiro": "Power Run", "localidade": "Ribeira do Pombal/BA", "dataEmissao": "2025-09-24", "valor": 205405.41, "vp": 221953.2, "taxa": 0.03, "prazo": 48, "mesesAtivos": 6, "mesesRestantes": 42}, {"cliente": "Izi One (Buckler)", "parceiro": "Buckler", "localidade": "São Paulo/SP", "dataEmissao": "2025-11-27", "valor": 258102.93, "vp": 249427.28, "taxa": 0.021, "prazo": 48, "mesesAtivos": 3, "mesesRestantes": 45}, {"cliente": "Fabrica Ct", "parceiro": "Cimerian", "localidade": "Cabo Frio/RJ", "dataEmissao": "2025-11-19", "valor": 1320528.8, "vp": 1444094.67, "taxa": 0.026, "prazo": 48, "mesesAtivos": 4, "mesesRestantes": 44}, {"cliente": "Izi One (Technogym)", "parceiro": "Technogym", "localidade": "São Paulo/SP", "dataEmissao": "2025-11-28", "valor": 766719.38, "vp": 740852.93, "taxa": 0.021, "prazo": 48, "mesesAtivos": 3, "mesesRestantes": 45}, {"cliente": "Izi One (Total Health)", "parceiro": "Total Health", "localidade": "São Paulo/SP", "dataEmissao": "2025-11-11", "valor": 102682.05, "vp": 100371.39, "taxa": 0.021, "prazo": 48, "mesesAtivos": 4, "mesesRestantes": 44}, {"cliente": "Izi One (BRW)", "parceiro": "BRW", "localidade": "São Paulo/SP", "dataEmissao": "2025-12-31", "valor": 396068.23, "vp": 387090.6, "taxa": 0.021, "prazo": 48, "mesesAtivos": 2, "mesesRestantes": 46}, {"cliente": "LFA", "parceiro": "Cimerian", "localidade": "São Paulo/SP", "dataEmissao": "2025-12-17", "valor": 143539.09, "vp": 154842.35, "taxa": 0.03, "prazo": 48, "mesesAtivos": 3, "mesesRestantes": 45}];
+let PIPELINE=[], CARTEIRA=[], activeTab='pipeline';
+let pF={status:'all',parceiro:'all'}, cF={parceiro:'all'};
 
-let pF={status:'all',parceiro:'all'},cF={parceiro:'all'};
+// ── CSV PARSER ───────────────────────────────────────────
+function parseCSV(text){
+  const lines=text.trim().split('\n').map(line=>{
+    const cols=[];let cur='',inQ=false;
+    for(let i=0;i<line.length;i++){
+      if(line[i]==='"'){inQ=!inQ;}
+      else if(line[i]===','&&!inQ){cols.push(cur.trim());cur='';}
+      else{cur+=line[i];}
+    }
+    cols.push(cur.trim());return cols;
+  });
+  return lines;
+}
 
+function parsePipeline(text){
+  const lines=parseCSV(text);
+  const hRow=lines.findIndex(r=>r.some(c=>c.toLowerCase().includes('cliente')));
+  if(hRow<0)throw new Error('Aba Pipeline não encontrada');
+  const H=lines[hRow].map(h=>h.toLowerCase().trim());
+  const ci=kw=>H.findIndex(h=>h.includes(kw));
+  const iC=ci('cliente'),iP=ci('parceiro'),iS=ci('status'),iV=H.findIndex(h=>h.trim()==='valor'),
+        iE=ci('entrada'),iL=ci('liquido'),iTCT=ci('tc total'),iTCLq=ci('tc liqu'),
+        iFin=ci('financiado'),iD=ci('desembolso'),iPri=ci('prioridade');
+  const iTC=H.findIndex((h,i)=>h.trim()==='tc'&&i!==iTCT&&i!==iTCLq);
+  return lines.slice(hRow+1).filter(r=>r.some(c=>c!=='')).map(r=>{
+    const ddRaw=(r[iD]||'').trim();
+    let dd=null,semLabel=null;
+    if(ddRaw.match(/^[12]S20\d\d$/i)){semLabel=ddRaw.toUpperCase();}
+    else if(ddRaw){try{const d=new Date(ddRaw);if(!isNaN(d))dd=d.toISOString().split('T')[0];}catch(e){}}
+    return{
+      cliente:(r[iC]||'—').trim(),parceiro:(r[iP]||'—').trim(),
+      status:(r[iS]||'').trim().toLowerCase(),
+      valor:num(r[iV]),entrada:num(r[iE]),liquido:num(r[iL]),
+      tcTotal:num(r[iTCT]),tcLiq:num(r[iTCLq]),tc:num(r[iTC>=0?iTC:-1]),
+      financiado:num(r[iFin]),dataDesembolso:dd,semestreLabel:semLabel,
+      prioridade:(r[iPri]||'').trim(),
+    };
+  }).filter(r=>r.cliente!=='—');
+}
+
+function parseCarteira(text){
+  const lines=parseCSV(text);
+  const hRow=lines.findIndex(r=>r.some(c=>c.toLowerCase().includes('cliente')));
+  if(hRow<0)throw new Error('Aba Carteira não encontrada');
+  const H=lines[hRow].map(h=>h.toLowerCase().trim());
+  const ci=kw=>H.findIndex(h=>h.includes(kw));
+  const iC=ci('cliente'),iP=ci('parceiro'),iL=ci('localidade'),iD=ci('emiss'),
+        iV=H.findIndex(h=>h.includes('valor')),iVP=ci('vp'),
+        iT=ci('taxa'),iPr=ci('prazo');
+  const today=new Date();
+  return lines.slice(hRow+1).filter(r=>r.some(c=>c!=='')).map(r=>{
+    const de=new Date(r[iD]);
+    const mesesAtivos=Math.max(0,Math.floor((today-de)/(30*24*3600*1000)));
+    const prazo=parseInt(r[iPr])||48;
+    return{
+      cliente:(r[iC]||'—').trim(),parceiro:(r[iP]||'—').trim(),
+      localidade:(r[iL]||'').trim(),
+      dataEmissao:isNaN(de)?'':de.toISOString().split('T')[0],
+      valor:num(r[iV]),vp:num(r[iVP]),
+      taxa:num(r[iT]),prazo,
+      mesesAtivos,mesesRestantes:Math.max(0,prazo-mesesAtivos),
+    };
+  }).filter(r=>r.cliente!=='—');
+}
+
+// ── LOAD DATA ────────────────────────────────────────────
+async function loadData(){
+  document.getElementById('syncDot').className='sync-dot';
+  document.getElementById('syncLabel').textContent='Atualizando...';
+  try{
+    const [rP,rC]=await Promise.all([
+      fetch(URL_PIPELINE+'&t='+Date.now()),
+      fetch(URL_CARTEIRA+'&t='+Date.now()),
+    ]);
+    if(!rP.ok||!rC.ok)throw new Error('Erro ao buscar planilha');
+    const [tP,tC]=await Promise.all([rP.text(),rC.text()]);
+    PIPELINE=parsePipeline(tP);
+    CARTEIRA=parseCarteira(tC);
+    document.getElementById('syncDot').className='sync-dot live';
+    document.getElementById('syncLabel').textContent='Google Sheets · ao vivo';
+    renderAll();
+  }catch(e){
+    document.getElementById('syncDot').className='sync-dot';
+    document.getElementById('syncLabel').textContent='Erro na conexão';
+    document.getElementById('main-content').innerHTML=`<div style="text-align:center;padding:60px;color:var(--r)">
+      <div style="font-size:32px;margin-bottom:12px">⚠️</div>
+      <div style="font-weight:700;margin-bottom:8px">Não foi possível carregar os dados</div>
+      <div style="font-size:13px;color:var(--m);margin-bottom:20px">${e.message}</div>
+      <button onclick="loadData()" style="padding:10px 24px;background:var(--g);color:#000;border:none;border-radius:8px;font-weight:700;cursor:pointer;font-family:'Syne',sans-serif">Tentar novamente</button>
+    </div>`;
+  }
+}
+
+// ── HELPERS ──────────────────────────────────────────────
 function donutCard(entries,valFn){
   const items=entries.filter(([,v])=>valFn(v)>0);
   const tot=items.reduce((s,[,v])=>s+valFn(v),0);
@@ -147,21 +316,30 @@ function donutCard(entries,valFn){
 }
 
 function showTab(tab,el){
+  activeTab=tab;
   document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
   el.classList.add('active');
-  document.getElementById('tab-pipeline').style.display=tab==='pipeline'?'block':'none';
-  document.getElementById('tab-carteira').style.display=tab==='carteira'?'block':'none';
-  tab==='pipeline'?renderPipeline():renderCarteira();
+  renderAll();
 }
 
+function renderAll(){
+  const mc=document.getElementById('main-content');
+  mc.innerHTML='<div id="tab-pipeline"></div><div id="tab-carteira" style="display:none"></div>';
+  if(activeTab==='pipeline') renderPipeline();
+  else renderCarteira();
+}
+
+// ── PIPELINE ─────────────────────────────────────────────
 function renderPipeline(){
+  document.getElementById('tab-pipeline').style.display='block';
+  document.getElementById('tab-carteira').style.display='none';
+
   const data=PIPELINE.filter(r=>(pF.status==='all'||r.status===pF.status)&&(pF.parceiro==='all'||r.parceiro===pF.parceiro));
   const active=PIPELINE.filter(r=>r.status!=='negado');
   const desembolsados=PIPELINE.filter(r=>r.status==='desembolsado');
   const aprovados=PIPELINE.filter(r=>r.status==='aprovado');
   const sum=(arr,k)=>arr.reduce((s,r)=>s+r[k],0);
 
-  // KPIs
   const kpis=[
     {l:'Operações Ativas',v:active.length,s:`${PIPELINE.filter(r=>r.status==='negado').length} negadas`,c:'#7c6af7'},
     {l:'Valor Total',v:fmt(sum(active,'valor')),s:'excl. negadas',c:'#f7a26a'},
@@ -170,91 +348,32 @@ function renderPipeline(){
     {l:'TC Total (R$)',v:fmt(sum(active,'tc')),s:'comissão gerada',c:'#e879f9'},
   ].map(k=>`<div class="kpi" style="border-top-color:${k.c}"><div class="kpi-label">${k.l}</div><div class="kpi-value">${k.v}</div><div class="kpi-sub">${k.s}</div></div>`).join('');
 
-  // ── TIMELINE CHART ─────────────────────────────────
-  // Agrupar por mês operações com data exata
-  const monthMap={};
-  const semMap={'1S2026':[],'2S2026':[],'1S2025':[],'2S2025':[]};
-
+  // Timeline por mês
+  const monthMap={},semMap={'1S2026':[],'2S2026':[],'1S2025':[],'2S2025':[]};
   PIPELINE.filter(r=>r.status!=='negado').forEach(r=>{
     if(r.dataDesembolso){
       const d=new Date(r.dataDesembolso+'T12:00:00');
       const key=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}`;
-      if(!monthMap[key]) monthMap[key]={ops:[],total:0,year:d.getFullYear(),month:d.getMonth()};
-      monthMap[key].ops.push(r);
-      monthMap[key].total+=r.financiado;
-    } else if(r.semestreLabel && semMap[r.semestreLabel]!==undefined){
+      if(!monthMap[key])monthMap[key]={ops:[],total:0,year:d.getFullYear(),month:d.getMonth()};
+      monthMap[key].ops.push(r);monthMap[key].total+=r.financiado;
+    } else if(r.semestreLabel&&semMap[r.semestreLabel]!==undefined){
       semMap[r.semestreLabel].push(r);
     }
   });
-
   const sortedMonths=Object.keys(monthMap).sort();
-  const maxMonthVal=Math.max(...sortedMonths.map(k=>monthMap[k].total),1);
+  const maxMV=Math.max(...sortedMonths.map(k=>monthMap[k].total),1);
+  const mColors=['#00e5a0','#38bdf8','#7c6af7','#f7a26a','#e879f9','#fb923c'];
+  const timelineHTML=sortedMonths.length?`<div class="card"><div class="card-title">📅 Previsão de Desembolso por Mês</div><div class="timeline-chart">${
+    sortedMonths.map((key,i)=>{const m=monthMap[key];const bw=(m.total/maxMV*100).toFixed(1);const c=mColors[i%mColors.length];return`<div class="month-row"><div class="month-label"><span>${MONTHS[m.month]}</span><span class="year">${m.year}</span></div><div class="month-bar-wrap"><div class="month-bar-outer"><div class="month-bar-inner"><div class="month-bar-fill" style="width:${bw}%;background:${c}"></div></div><div class="month-bar-val" style="color:${c}">${fmt(m.total)}</div></div><div class="month-ops">${m.ops.map(op=>`<span class="month-op-tag" style="border-color:${c};color:${c}">${op.cliente}</span>`).join('')}</div></div></div>`;}).join('')
+  }</div></div>`:'';
 
-  const monthColors=['#00e5a0','#38bdf8','#7c6af7','#f7a26a','#e879f9','#fb923c','#f25c5c','#4ade80'];
-
-  const timelineHTML=sortedMonths.length>0?`
-    <div class="card">
-      <div class="card-title">📅 Previsão de Desembolso por Mês</div>
-      <div class="timeline-chart">
-        ${sortedMonths.map((key,i)=>{
-          const m=monthMap[key];
-          const barW=(m.total/maxMonthVal*100).toFixed(1);
-          const color=monthColors[i%monthColors.length];
-          return`<div class="month-row">
-            <div class="month-label">
-              <span>${MONTHS[m.month]}</span>
-              <span class="year">${m.year}</span>
-            </div>
-            <div class="month-bar-wrap">
-              <div class="month-bar-outer">
-                <div class="month-bar-inner"><div class="month-bar-fill" style="width:${barW}%;background:${color}"></div></div>
-                <div class="month-bar-val" style="color:${color}">${fmt(m.total)}</div>
-              </div>
-              <div class="month-ops">${m.ops.map(op=>`<span class="month-op-tag" style="border-color:${color};color:${color}">${op.cliente}</span>`).join('')}</div>
-            </div>
-          </div>`;
-        }).join('')}
-      </div>
-    </div>`:'';
-
-  // ── SEMESTRE BLOCKS ─────────────────────────────────
-  const semCfg={
-    '1S2026':{label:'1º Semestre 2026',color:'#38bdf8',bg:'rgba(56,189,248,.08)',border:'rgba(56,189,248,.3)'},
-    '2S2026':{label:'2º Semestre 2026',color:'#7c6af7',bg:'rgba(124,106,247,.08)',border:'rgba(124,106,247,.3)'},
-    '1S2025':{label:'1º Semestre 2025',color:'#f7a26a',bg:'rgba(247,162,106,.08)',border:'rgba(247,162,106,.3)'},
-    '2S2025':{label:'2º Semestre 2025',color:'#00e5a0',bg:'rgba(0,229,160,.08)',border:'rgba(0,229,160,.3)'},
-  };
-
-  const semesterHTML=Object.entries(semMap).filter(([,ops])=>ops.length>0).map(([sem,ops])=>{
-    const cfg=semCfg[sem];
-    const total=ops.reduce((s,r)=>s+r.financiado,0);
-    return`<div class="sem-section">
-      <div class="sem-header" style="background:${cfg.bg};border-left-color:${cfg.color};border-left-width:3px;border-left-style:solid;">
-        <div>
-          <div class="sem-title" style="color:${cfg.color}">${cfg.label}</div>
-          <div class="sem-subtitle">${ops.length} operações sem data exata</div>
-        </div>
-        <div class="sem-total" style="color:${cfg.color}">${fmt(total)}</div>
-      </div>
-      <div class="sem-ops">
-        ${ops.map(r=>{
-          const pCfg={'Alta':{c:'#f25c5c'},'Media':{c:'#f7a26a'},'Baixa':{c:'#00e5a0'}}[r.prioridade]||{c:'var(--m)'};
-          return`<div class="sem-op">
-            <div style="flex:1;min-width:0">
-              <div class="sem-op-name" title="${r.cliente}">${r.cliente}</div>
-              <div class="sem-op-parceiro">${r.parceiro}</div>
-            </div>
-            <span style="font-size:10px;font-weight:700;color:${pCfg.c};padding:2px 8px;border-radius:10px;background:rgba(255,255,255,.05);flex-shrink:0">${r.prioridade||'—'}</span>
-            <div class="sem-op-val" style="color:${cfg.color}">${fmt(r.financiado)}</div>
-          </div>`;
-        }).join('')}
-      </div>
-    </div>`;
+  const semCfg={'1S2026':{label:'1º Semestre 2026',color:'#38bdf8',bg:'rgba(56,189,248,.08)'},'2S2026':{label:'2º Semestre 2026',color:'#7c6af7',bg:'rgba(124,106,247,.08)'},'1S2025':{label:'1º Semestre 2025',color:'#f7a26a',bg:'rgba(247,162,106,.08)'},'2S2025':{label:'2º Semestre 2025',color:'#00e5a0',bg:'rgba(0,229,160,.08)'}};
+  const semHTML=Object.entries(semMap).filter(([,ops])=>ops.length>0).map(([sem,ops])=>{
+    const cfg=semCfg[sem];const total=ops.reduce((s,r)=>s+r.financiado,0);
+    return`<div class="sem-section"><div class="sem-header" style="background:${cfg.bg};border-left:3px solid ${cfg.color}"><div><div class="sem-title" style="color:${cfg.color}">${cfg.label}</div><div class="sem-subtitle">${ops.length} operações sem data exata</div></div><div class="sem-total" style="color:${cfg.color}">${fmt(total)}</div></div><div class="sem-ops">${ops.map(r=>{const pCfg={'Alta':{c:'#f25c5c'},'Media':{c:'#f7a26a'},'Baixa':{c:'#00e5a0'}}[r.prioridade]||{c:'var(--m)'};return`<div class="sem-op"><div style="flex:1;min-width:0"><div class="sem-op-name" title="${r.cliente}">${r.cliente}</div><div class="sem-op-parceiro">${r.parceiro}</div></div><span style="font-size:10px;font-weight:700;color:${pCfg.c};padding:2px 8px;border-radius:10px;background:rgba(255,255,255,.05);flex-shrink:0">${r.prioridade||'—'}</span><div class="sem-op-val" style="color:${cfg.color}">${fmt(r.financiado)}</div></div>`;}).join('')}</div></div>`;
   }).join('');
+  const semCard=semHTML?`<div class="card"><div class="card-title">📆 Previsão por Semestre</div>${semHTML}</div>`:'';
 
-  const semCard=semesterHTML?`<div class="card"><div class="card-title">📆 Previsão por Semestre</div>${semesterHTML}</div>`:'';
-
-  // Donut + status bars
   const gP={};active.forEach(r=>{gP[r.parceiro]=(gP[r.parceiro]||0)+r.valor;});
   const eP=Object.entries(gP).sort((a,b)=>b[1]-a[1]);
   const gS={};PIPELINE.forEach(r=>{if(!gS[r.status])gS[r.status]={c:0,v:0};gS[r.status].c++;gS[r.status].v+=r.financiado;});
@@ -262,14 +381,12 @@ function renderPipeline(){
   const mxS=Math.max(...eS.map(([,x])=>x.v));
   const sbars=eS.map(([st,info])=>{const cfg=SP[st]||{label:st,color:'#5a6070'};return`<div class="sbar"><div class="sbar-h"><div class="sbar-l"><span style="width:8px;height:8px;border-radius:50%;background:${cfg.color};display:inline-block"></span>${cfg.label}<span class="sbar-c">${info.c} ops</span></div><div class="sbar-v" style="color:${cfg.color}">${fmt(info.v)}</div></div><div class="track"><div class="fill" style="width:${mxS>0?info.v/mxS*100:0}%;background:${cfg.color}"></div></div></div>`;}).join('');
 
-  // Filters
   const statuses=[...new Set(PIPELINE.map(r=>r.status))];
   const parceiros=[...new Set(PIPELINE.map(r=>r.parceiro))].sort();
   const sBtns=['all',...statuses].map(s=>`<button class="fb ${pF.status===s?'active':''}" onclick="pff('status','${s}')">${s==='all'?'Todos':(SP[s]?.label||s)}</button>`).join('');
   const pOpts=['<option value="all">Todos os parceiros</option>',...parceiros.map(p=>`<option value="${p}" ${pF.parceiro===p?'selected':''}>${p}</option>`)].join('');
   const clr=(pF.status!=='all'||pF.parceiro!=='all')?`<button class="fcl" onclick="pfc()">✕ Limpar</button>`:'';
 
-  // Table
   const rows=data.map(r=>{
     const cfg=SP[r.status]||{label:r.status,color:'#5a6070',bg:'rgba(90,96,112,.12)'};
     const pCfg={'Alta':{c:'#f25c5c'},'Media':{c:'#f7a26a'},'Baixa':{c:'#00e5a0'}}[r.prioridade];
@@ -281,19 +398,14 @@ function renderPipeline(){
   const tV=sum(data,'valor'),tF=sum(data,'financiado'),tTC=sum(data,'tc');
   const foot=data.length?`<tr><td class="l" colspan="3" style="color:var(--m);font-size:10px;text-transform:uppercase;font-family:'Syne',sans-serif">Total · ${data.length} ops</td><td>${fmt(tV)}</td><td></td><td>${fmt(tF)}</td><td style="color:var(--v)">${fmt(tTC)}</td><td colspan="2"></td></tr>`:'';
 
-  document.getElementById('tab-pipeline').innerHTML=`
-    <div class="kpis">${kpis}</div>
-    ${timelineHTML}
-    ${semCard}
-    <div class="grid2" style="margin-bottom:24px">
-      <div class="card" style="margin-bottom:0"><div class="card-title">Distribuição por Parceiro</div>${donutCard(eP,v=>v)}</div>
-      <div class="card" style="margin-bottom:0"><div class="card-title">Breakdown por Status · Valor Financiado</div>${sbars}</div>
-    </div>
-    <div class="filters"><span class="fl">Filtrar</span>${sBtns}<div class="dv"></div><select class="fsel" onchange="pff('parceiro',this.value)">${pOpts}</select>${clr}<span class="fc">${data.length} operações</span></div>
-    <div class="tw"><div class="ts"><table><thead><tr><th class="l">Cliente</th><th class="l">Parceiro</th><th class="l">Status</th><th>Valor Bruto</th><th>Entrada</th><th>Val. Financiado</th><th>TC (R$)</th><th class="l">Prioridade</th><th>Previsão</th></tr></thead><tbody>${rows}</tbody><tfoot>${foot}</tfoot></table></div></div>`;
+  document.getElementById('tab-pipeline').innerHTML=`<div class="kpis">${kpis}</div>${timelineHTML}${semCard}<div class="grid2" style="margin-bottom:24px"><div class="card" style="margin-bottom:0"><div class="card-title">Distribuição por Parceiro</div>${donutCard(eP,v=>v)}</div><div class="card" style="margin-bottom:0"><div class="card-title">Breakdown por Status · Valor Financiado</div>${sbars}</div></div><div class="filters"><span class="fl">Filtrar</span>${sBtns}<div class="dv"></div><select class="fsel" onchange="pff('parceiro',this.value)">${pOpts}</select>${clr}<span class="fc">${data.length} operações</span></div><div class="tw"><div class="ts"><table><thead><tr><th class="l">Cliente</th><th class="l">Parceiro</th><th class="l">Status</th><th>Valor Bruto</th><th>Entrada</th><th>Val. Financiado</th><th>TC (R$)</th><th class="l">Prioridade</th><th>Previsão</th></tr></thead><tbody>${rows}</tbody><tfoot>${foot}</tfoot></table></div></div>`;
 }
 
+// ── CARTEIRA ─────────────────────────────────────────────
 function renderCarteira(){
+  document.getElementById('tab-pipeline').style.display='none';
+  document.getElementById('tab-carteira').style.display='block';
+
   const data=CARTEIRA.filter(r=>cF.parceiro==='all'||r.parceiro===cF.parceiro).sort((a,b)=>b.vp-a.vp);
   const totalValor=CARTEIRA.reduce((s,r)=>s+r.valor,0);
   const totalVP=CARTEIRA.reduce((s,r)=>s+r.vp,0);
@@ -305,64 +417,36 @@ function renderCarteira(){
     {l:'Valor Presente (VP)',v:fmt(totalVP),s:'saldo devedor atual',c:'#00e5a0'},
     {l:'Pipeline Aprovado',v:fmt(pipeline_ativo),s:'aguardando desembolso',c:'#7c6af7'},
     {l:'Desembolsado',v:fmt(desembolsado),s:'já saiu',c:'#38bdf8'},
-    {l:'Taxa Média',v:((CARTEIRA.reduce((s,r)=>s+r.taxa,0)/CARTEIRA.length)*100).toFixed(2)+'%',s:'a.m. ponderada',c:'#e879f9'},
+    {l:'Taxa Média',v:CARTEIRA.length?((CARTEIRA.reduce((s,r)=>s+r.taxa,0)/CARTEIRA.length)*100).toFixed(2)+'%':'—',s:'a.m. ponderada',c:'#e879f9'},
   ].map(k=>`<div class="kpi" style="border-top-color:${k.c}"><div class="kpi-label">${k.l}</div><div class="kpi-value">${k.v}</div><div class="kpi-sub">${k.s}</div></div>`).join('');
 
-  // Donut parceiros (VP)
   const gP={};CARTEIRA.forEach(r=>{gP[r.parceiro]=(gP[r.parceiro]||0)+r.vp;});
   const eP=Object.entries(gP).sort((a,b)=>b[1]-a[1]);
-
-  // Prazo breakdown
   const gPrazo={};CARTEIRA.forEach(r=>{const k=r.prazo+'m';if(!gPrazo[k])gPrazo[k]={c:0,v:0};gPrazo[k].c++;gPrazo[k].v+=r.vp;});
   const ePrazo=Object.entries(gPrazo).sort((a,b)=>parseInt(a[0])-parseInt(b[0]));
   const mxP=Math.max(...ePrazo.map(([,x])=>x.v));
   const prazoColors={'24m':'#00e5a0','36m':'#38bdf8','48m':'#7c6af7'};
   const prazoBars=ePrazo.map(([k,info])=>{const c=prazoColors[k]||'#f7a26a';return`<div class="sbar"><div class="sbar-h"><div class="sbar-l"><span style="width:8px;height:8px;border-radius:50%;background:${c};display:inline-block"></span>Prazo ${k}<span class="sbar-c">${info.c} ops</span></div><div class="sbar-v" style="color:${c}">${fmt(info.v)}</div></div><div class="track"><div class="fill" style="width:${mxP>0?info.v/mxP*100:0}%;background:${c}"></div></div></div>`;}).join('');
 
-  // Filters
   const parceiros=[...new Set(CARTEIRA.map(r=>r.parceiro))].sort();
   const pOpts=['<option value="all">Todos os parceiros</option>',...parceiros.map(p=>`<option value="${p}" ${cF.parceiro===p?'selected':''}>${p}</option>`)].join('');
   const clr=cF.parceiro!=='all'?`<button class="fcl" onclick="cfc()">✕ Limpar</button>`:'';
 
-  // Table — VP sem % comparativo
   const rows=data.map(r=>{
     const prog=Math.min(100,(r.mesesAtivos/r.prazo*100)).toFixed(0);
-    return`<tr>
-      <td class="l" style="max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${r.cliente}">${r.cliente}</td>
-      <td class="l mu">${r.parceiro}</td>
-      <td class="l mu" style="font-size:11px">${r.localidade}</td>
-      <td class="mono">${fmt(r.valor)}</td>
-      <td class="mono" style="color:var(--g)">${fmt(r.vp)}</td>
-      <td class="mu">${(r.taxa*100).toFixed(1)}% a.m.</td>
-      <td class="mu">${r.prazo}m</td>
-      <td>
-        <div class="prog-wrap">
-          <div class="prog-bar"><div class="prog-fill" style="width:${prog}%;background:var(--g)"></div></div>
-          <span class="prog-txt">${r.mesesRestantes}m rest.</span>
-        </div>
-      </td>
-      <td class="mu">${fmtD(r.dataEmissao)}</td>
-    </tr>`;
+    return`<tr><td class="l" style="max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${r.cliente}">${r.cliente}</td><td class="l mu">${r.parceiro}</td><td class="l mu" style="font-size:11px">${r.localidade}</td><td class="mono">${fmt(r.valor)}</td><td class="mono" style="color:var(--g)">${fmt(r.vp)}</td><td class="mu">${(r.taxa*100).toFixed(1)}% a.m.</td><td class="mu">${r.prazo}m</td><td><div class="prog-wrap"><div class="prog-bar"><div class="prog-fill" style="width:${prog}%;background:var(--g)"></div></div><span class="prog-txt">${r.mesesRestantes}m rest.</span></div></td><td class="mu">${fmtD(r.dataEmissao)}</td></tr>`;
   }).join('')||`<tr><td colspan="9" class="et">Nenhuma operação encontrada.</td></tr>`;
 
   const tV=data.reduce((s,r)=>s+r.valor,0),tVP=data.reduce((s,r)=>s+r.vp,0);
   const foot=data.length?`<tr><td class="l" colspan="3" style="color:var(--m);font-size:10px;text-transform:uppercase;font-family:'Syne',sans-serif">Total · ${data.length} ops</td><td>${fmt(tV)}</td><td style="color:var(--g)">${fmt(tVP)}</td><td colspan="4"></td></tr>`:'';
 
-  document.getElementById('tab-carteira').innerHTML=`
-    <div class="kpis">${kpis}</div>
-    <div class="grid2">
-      <div class="card" style="margin-bottom:0"><div class="card-title">Concentração por Parceiro · VP</div>${donutCard(eP,v=>v)}</div>
-      <div class="card" style="margin-bottom:0"><div class="card-title">Distribuição por Prazo · VP Total</div>${prazoBars}</div>
-    </div>
-    <div class="filters" style="margin-top:24px"><span class="fl">Filtrar</span><div class="dv"></div><select class="fsel" onchange="cff('parceiro',this.value)">${pOpts}</select>${clr}<span class="fc">${data.length} operações</span></div>
-    <div class="tw"><div class="ts"><table><thead><tr><th class="l">Cliente</th><th class="l">Parceiro</th><th class="l">Localidade</th><th>Valor Emissão</th><th>VP</th><th>Taxa</th><th>Prazo</th><th>Progresso</th><th>Emissão</th></tr></thead><tbody>${rows}</tbody><tfoot>${foot}</tfoot></table></div></div>`;
+  document.getElementById('tab-carteira').innerHTML=`<div class="kpis">${kpis}</div><div class="grid2"><div class="card" style="margin-bottom:0"><div class="card-title">Concentração por Parceiro · VP</div>${donutCard(eP,v=>v)}</div><div class="card" style="margin-bottom:0"><div class="card-title">Distribuição por Prazo · VP Total</div>${prazoBars}</div></div><div class="filters" style="margin-top:24px"><span class="fl">Filtrar</span><div class="dv"></div><select class="fsel" onchange="cff('parceiro',this.value)">${pOpts}</select>${clr}<span class="fc">${data.length} operações</span></div><div class="tw"><div class="ts"><table><thead><tr><th class="l">Cliente</th><th class="l">Parceiro</th><th class="l">Localidade</th><th>Valor Emissão</th><th>VP</th><th>Taxa</th><th>Prazo</th><th>Progresso</th><th>Emissão</th></tr></thead><tbody>${rows}</tbody><tfoot>${foot}</tfoot></table></div></div>`;
 }
 
 function pff(k,v){pF[k]=v;renderPipeline();}
 function pfc(){pF={status:'all',parceiro:'all'};renderPipeline();}
 function cff(k,v){cF[k]=v;renderCarteira();}
 function cfc(){cF={parceiro:'all'};renderCarteira();}
-renderPipeline();
 </script>
 </body>
 </html>
